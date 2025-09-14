@@ -1,0 +1,23 @@
+[
+  {
+    "id": 101,
+    "nombre": "Zapatillas Running",
+    "desc": "Zapatillas deportivas para correr",
+    "precio": 59.99,
+    "imagen": "zapatillas.jpg"
+  },
+  {
+    "id": 102,
+    "nombre": "Camiseta Deportiva",
+    "desc": "Camiseta de poliéster transpirable",
+    "precio": 19.99,
+    "imagen": "camiseta.jpg"
+  },
+  {
+    "id": 103,
+    "nombre": "Botella de Agua",
+    "desc": "Botella térmica reutilizable 500ml",
+    "precio": 14.50,
+    "imagen": "botella.jpg"
+  }
+]

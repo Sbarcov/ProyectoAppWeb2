@@ -1,4 +1,5 @@
-/** import dayjs from "dayjs";
+/** - Manejo de fechas en Js -   
+ import dayjs from "dayjs";
 
 console.log("Chau chau");
 
@@ -10,6 +11,8 @@ console.log(fechaActual.format('YYYY-MM-DD'));
 
 import express from 'express';
 import dot from "dotenv";
+import { readFile, writeFile } from "fs/promises";
+import { write } from 'fs';
 dot.config();
 
 const app = express();
@@ -20,6 +23,9 @@ app.use(express.json());
 app.listen(port, () =>{
     console.log(`Servidor Activo - Puerto ${port}`)
 });
+
+const file = await readFile('./StoreData/productos.json', 'utf-8');
+const productos = JSON.parse(file);
 
 const objetos = [
     {name: 'Auto', color:'Rojo'},
@@ -78,3 +84,34 @@ app.post('/colordepost',(req, res)=>{
      */
 
 });
+
+
+/** -- PUT -- */
+app.get('/productos', (req, res) => {
+    res.status(200).json(productos)
+});
+
+app.put('/productos/update/:id', (req, res) => {
+    const prodId = req.params.id;
+    const prodPrecio = req.body.precio;
+
+    try{
+        const index = productos.findIndex(e => e.id == prodId)
+        if(index !== -1){
+            productos[index].precio = prodPrecio;
+            writeFile('./StoreData/productos.json', JSON.stringify(productos));
+            res.status(200).json('Precio Actualizado');
+        }
+        else{
+            res.status(400).json('No se encontro el producto');
+        }
+    }
+    catch(error){
+        res.send(500).json('Error al actualizar el precio');
+    }
+});
+
+/** Prueba en postman
+     * localhost:3000/productos/update/102
+     * body --->  {"precio": 25.99}
+     */

@@ -10,14 +10,14 @@
     "id": 102,
     "nombre": "Camiseta Deportiva",
     "desc": "Camiseta de poliéster transpirable",
-    "precio": 19.99,
+    "precio": 60.99,
     "imagen": "camiseta.jpg"
   },
   {
     "id": 103,
     "nombre": "Botella de Agua",
     "desc": "Botella térmica reutilizable 500ml",
-    "precio": 14.50,
+    "precio": 14.5,
     "imagen": "botella.jpg"
   }
 ]

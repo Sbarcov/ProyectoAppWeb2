@@ -87,6 +87,8 @@ app.post('/colordepost',(req, res)=>{
 
 
 /** -- PUT -- */
+
+/** get de prueba readFile */
 app.get('/productos', (req, res) => {
     res.status(200).json(productos)
 });
@@ -99,7 +101,7 @@ app.put('/productos/update/:id', (req, res) => {
         const index = productos.findIndex(e => e.id == prodId)
         if(index !== -1){
             productos[index].precio = prodPrecio;
-            writeFile('./StoreData/productos.json', JSON.stringify(productos));
+            writeFile('./StoreData/productos.json', JSON.stringify(productos, null, 2));
             res.status(200).json('Precio Actualizado');
         }
         else{
@@ -109,9 +111,30 @@ app.put('/productos/update/:id', (req, res) => {
     catch(error){
         res.send(500).json('Error al actualizar el precio');
     }
-});
 
-/** Prueba en postman
+    /** Prueba en postman
      * localhost:3000/productos/update/102
      * body --->  {"precio": 25.99}
      */
+});
+
+/**  -- DELETE --  */
+ app.delete('/productos/delete/:id', (req, res) =>{
+    const prodId = req.params.id;
+
+    try{
+        const index = productos.findIndex(e => e.id == prodId)
+        if(index !== -1){
+            productos.splice(index, 1);
+            writeFile('./StoreData/productos.json', JSON.stringify(productos, null, 2));
+            res.status(200).json('Producto Eliminado');
+        }
+        else{
+            res.status(400).json('No se encontro el producto');
+        }
+    }
+    catch(error){
+        res.send(500).json('Error al eliminar el producto');
+    }
+
+ });

@@ -10,10 +10,10 @@ router.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    const result = usuariosData.find(e => e.nombre === username && e.contraseña === password);
+    const result = usuariosData.find(e => e.username === username && e.password === password);
 
     if(result){
-        res.status(200).json (`Bienvenido ${result.nombre} (ID: ${result.id})`)
+        res.status(200).json (`Bienvenido ${result.username} (ID: ${result.id})`)
     }else{
         res.status(400).json(`${username} no encontrado`)
     }

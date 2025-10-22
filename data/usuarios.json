@@ -1,23 +1,23 @@
 [
   {
     "id": 1,
-    "nombre": "Juan",
+    "username": "Juan",
     "apellido": "Pérez",
     "email": "juan.perez@example.com",
-    "contraseña": "123456"
+    "password": "123456"
   },
   {
     "id": 2,
-    "nombre": "Ana",
+    "username": "Ana",
     "apellido": "Gómez",
     "email": "ana.gomez@example.com",
-    "contraseña": "abcdef"
+    "password": "abcdef"
   },
   {
     "id": 3,
-    "nombre": "Luis",
+    "username": "Luis",
     "apellido": "Martínez",
     "email": "luis.martinez@example.com",
-    "contraseña": "pass789"
+    "password": "pass789"
   }
 ]

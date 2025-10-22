@@ -1,11 +1,12 @@
 import { Router } from "express"
+import { readFile, writeFile } from "fs/promises";
 
 const fileUsuarios = await readFile('./data/usuarios.json', 'utf-8');
 const usuariosData = JSON.parse(fileUsuarios);
 
 const router = Router();
 
-router.post('/users/login', (req, res) => {
+router.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
@@ -18,7 +19,7 @@ router.post('/users/login', (req, res) => {
     }
 })
 
-router.get('/users/find/:id', (req, res) =>{
+router.get('/find/:id', (req, res) =>{
     const id = parseInt(req.params.id);
 
     const result = usuariosData.find(e => e.id === id)

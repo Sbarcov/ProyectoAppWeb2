@@ -24,7 +24,7 @@
     "id": 200,
     "nombre": "Producto a borrar",
     "desc": "producto de prueba - delete",
-    "precio": 0.00,
+    "precio": 25.99,
     "imagen": "test.jpg"
   }
 ]

@@ -14,5 +14,13 @@
     "total": 19.99,
     "dirección": "Calle Falsa 123",
     "productos": [102]
+  },
+  {
+    "id": 3,
+    "id_usuario": 1,
+    "fecha": "0000-00-00",
+    "total": 0.00,
+    "dirección": "test",
+    "productos": [102]
   }
 ]

@@ -19,5 +19,12 @@
     "desc": "Botella térmica reutilizable 500ml",
     "precio": 14.5,
     "imagen": "botella.jpg"
+  },
+  {
+    "id": 104,
+    "nombre": "pantalon deportivo",
+    "desc": "pantalon corto futbol",
+    "precio": 45.99,
+    "imagen": "pantalon.jpg"
   }
 ]

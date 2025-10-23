@@ -7,9 +7,25 @@ const ventasData = JSON.parse(fileVentas);
 
 const router = Router();
 
-router.get('/all', (req, res) => {
+router.get('/todos', (req, res) => {
     res.status(200).json(ventasData)
 });
+
+router.get('/buscar/:id', (req, res) =>{
+    const id = parseInt(req.params.id);
+
+
+    let result = {};
+    ventasData.map( e =>{
+        if (e.id == id){ result = e}
+    });
+
+    if(Object.keys(result).length !== 0){
+        res.status(200).json(result);
+    }else{
+        res.status(400).json(`${id} no encontrado`)
+    }
+})
 
 router.post('/fechas/completo', (req, res) => {
     const desde = req.body.from;
@@ -56,6 +72,26 @@ router.post('/fechas/total', (req, res) => {
     }
     catch(error){
         res.send(500).json('Error al buscar ventas');
+    }
+});
+
+router.put('/actualizar/:id', (req, res) => {
+    const ventaId = req.params.id;
+    const usuarioId = req.body.id_usuario;
+
+    try{
+        const index = ventasData.findIndex(e => e.id == ventaId)
+        if(index !== -1){
+            ventasData[index].id_usuario = usuarioId;
+            writeFile('./data/ventas.json', JSON.stringify(ventasData, null, 2));
+            res.status(200).json('Usuario cambiado en esa venta');
+        }
+        else{
+            res.status(400).json('No se encontro la venta');
+        }
+    }
+    catch(error){
+        res.send(500).json('Error al actualizar la venta');
     }
 });
 

@@ -19,12 +19,5 @@
     "desc": "Botella térmica reutilizable 500ml",
     "precio": 14.5,
     "imagen": "botella.jpg"
-  },
-  {
-    "id": 200,
-    "nombre": "Producto a borrar",
-    "desc": "producto de prueba - delete",
-    "precio": 25.99,
-    "imagen": "test.jpg"
   }
 ]

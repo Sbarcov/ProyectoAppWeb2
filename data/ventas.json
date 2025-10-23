@@ -17,10 +17,18 @@
   },
   {
     "id": 3,
-    "id_usuario": 1,
-    "fecha": "0000-00-00",
-    "total": 0.00,
-    "dirección": "test",
-    "productos": [102]
+    "id_usuario": 3,
+    "fecha": "2025-09-15",
+    "total": 135.5,
+    "dirección": "Av. Siempre Viva 742",
+    "productos": [101, 102, 103]
+  },
+  {
+    "id": 4,
+    "id_usuario": 2,
+    "fecha": "2025-09-18",
+    "total": 74.49,
+    "dirección": "Calle Falsa 123",
+    "productos": [101, 103]
   }
 ]

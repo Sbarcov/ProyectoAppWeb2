@@ -95,7 +95,7 @@ router.put('/actualizar/:id', (req, res) => {
     }
 });
 
-router.delete('/delete/:id', (req, res) =>{
+router.delete('/eliminar/:id', (req, res) =>{
     const ventaId = req.params.id;
 
     try{

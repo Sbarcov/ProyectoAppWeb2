@@ -6,6 +6,29 @@ const fileUsuarios = await readFile('./data/usuarios.json', 'utf-8');
 const usuariosData = JSON.parse(fileUsuarios);
 
 const router = Router();
+/** Codigo del modulo 3 */
+
+router.post('/loginfront', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    const result = usuariosData.find(e => e.email === email && e.password === password);
+
+    if (result) {
+        // Devuelve un objeto JSON con los datos que necesitas
+        res.status(200).json({
+            username: result.username,
+            apellido: result.apellido,
+            email: result.email,
+            direccion: result.direccion
+        });
+    } else {
+        res.status(400).json({ error: `${email} no encontrado` });
+    }
+});
+
+
+/** Codigo del modulo 1 / modulo 2 */
 
 router.get('/buscar/:id', (req, res) =>{
     const id = parseInt(req.params.id);

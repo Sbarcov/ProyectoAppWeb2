@@ -5,7 +5,34 @@ import { get_user_byId } from "../utils/usuarios.js";
 const fileVentas = await readFile('./data/ventas.json', 'utf-8');
 const ventasData = JSON.parse(fileVentas);
 
+const fileVentasFront = await readFile('./data/ventasFront.json', 'utf-8');
+const ventasDataFront = JSON.parse(fileVentasFront);
+
 const router = Router();
+
+/** codigo del modulo 3 */
+
+router.post('/registrar', (req, res) => {
+
+    const numeroOrden = Math.floor(Math.random() * 9000) + 1000;
+
+    const nuevaOrden = {
+      ...req.body,
+      orden: numeroOrden, /** Simulamos un numero de orden, esta puede ser el id asignado automaticamente al persistir en una bd */
+      fecha: new Date().toISOString()
+
+    };
+
+    try{
+        ventasDataFront.push(nuevaOrden);
+        writeFile('./data/ventasFront.json', JSON.stringify(ventasDataFront, null, 2));
+        res.status(200).json('Venta registrada');
+    }catch (error){
+        res.status(500).json('Error al registrar venta');
+    }
+})
+
+/** codigo del modulo 1 / modulo 2 */
 
 router.get('/todos', (req, res) => {
     res.status(200).json(ventasData)

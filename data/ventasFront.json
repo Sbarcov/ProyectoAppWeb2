@@ -1,0 +1,27 @@
+[
+  {
+    "fecha": "2025-11-21T22:30:18.194Z",
+    "usuario": {
+      "username": "Luis",
+      "apellido": "Martínez",
+      "email": "luis.martinez@example.com",
+      "direccion": "Av. Libertad 456"
+    },
+    "items": [
+      {
+        "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+        "price": "695",
+        "quantity": 2,
+        "id": "5"
+      },
+      {
+        "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+        "price": "109.95",
+        "quantity": 1,
+        "id": "1"
+      }
+    ],
+    "total": "1499.95",
+    "orden": 1909
+  }
+]

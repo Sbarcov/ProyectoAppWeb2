@@ -1,3 +1,10 @@
+/**    CON EL OBJETIVO DE PRESERVAR EL CÓDIGO DESARROLLADO PARA LAS ENTREGAS DEL MÓDULO 1 Y 2
+ *     SE CREARON NUEVOS ENDPOINTS DESTINADOS A TRABAJAR CON EL FRONT DESARROLLADO PARA EL MOÓDULO 3
+ *     ESTOS ENDPOINTS, A DEMAS DE TRABAJAR CON LAS ESTRUCTURAS USUARIOS Y VENTAS, TAMBIEN TRABAJARAN
+ *     CON LAS 2 ESTRUCTURAS JSON NUEVAS (productosFront y categoriasFront).
+ * 
+ */
+
 import { Router } from "express"
 import { readFile, writeFile } from "fs/promises";
 
@@ -5,6 +12,24 @@ const fileProductos = await readFile('./data/productos.json', 'utf-8');
 const productosData = JSON.parse(fileProductos);
 
 const router = Router();
+
+/** CÓDIGO DEL MODULO 3*/
+
+const fileProductosFront = await readFile('./data/productosFront.json', 'utf-8');
+const productosFrontData = JSON.parse(fileProductosFront);
+
+const fileCategoriasFront = await readFile('./data/categoriasFront.json', 'utf-8');
+const CategoriasFrontData = JSON.parse(fileCategoriasFront);
+
+router.get('/allproducts', (req, res) => {
+    res.status(200).json(productosFrontData)
+});
+
+router.get('/allcategories', (req, res) => {
+    res.status(200).json(CategoriasFrontData)
+});
+
+/** CÓDIGO DEL MODULO 1 / MODULO 2 */
 
 router.get('/todos', (req, res) => {
     res.status(200).json(productosData)

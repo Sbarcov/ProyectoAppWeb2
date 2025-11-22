@@ -16,7 +16,7 @@ const router = Router();
 
 /** codigo del modulo 4 */
 
-router.post('/registrar', async(req, res) => {
+router.post('/registrarjwt', async(req, res) => {
 
     const token = req.body.token
 

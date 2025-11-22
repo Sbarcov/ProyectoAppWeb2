@@ -22,6 +22,31 @@
       }
     ],
     "total": "1499.95",
-    "orden": 1909
+    "orden": 1
+  },
+  {
+    "fecha": "2025-11-22T01:43:14.733Z",
+    "usuario": {
+      "username": "Sebastian",
+      "apellido": "barcovsci",
+      "email": "seba@hotmail.com",
+      "direccion": "San martin"
+    },
+    "items": [
+      {
+        "title": "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
+        "price": "109",
+        "quantity": 2,
+        "id": "11"
+      },
+      {
+        "title": "White Gold Plated Princess",
+        "price": "9.99",
+        "quantity": 1,
+        "id": "7"
+      }
+    ],
+    "total": "227.99",
+    "orden": 2
   }
 ]

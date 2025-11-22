@@ -9,18 +9,10 @@
   },
   {
     "id": 2,
-    "username": "Ana",
-    "apellido": "Gómez",
-    "email": "ana.gomez@example.com",
-    "password": "abcdef",
-    "direccion": "Av. Colon 123"
-  },
-  {
-    "id": 3,
-    "username": "Luis",
-    "apellido": "Martínez",
-    "email": "luis.martinez@example.com",
-    "password": "pass789",
-    "direccion": "Av. Libertad 456"
+    "username": "Sebastian",
+    "apellido": "barcovsci",
+    "email": "seba@hotmail.com",
+    "password": "$2b$08$bkofG.YLk2E8wNPJmo3UTO7vSnw1PkIhJPF2bx8hFJxknjoxGYKaC",
+    "direccion": "San martin"
   }
 ]

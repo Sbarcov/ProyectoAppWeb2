@@ -1,12 +1,6 @@
-/**    CON EL OBJETIVO DE PRESERVAR EL CÓDIGO DESARROLLADO PARA LAS ENTREGAS DEL MÓDULO 1 Y 2
- *     SE CREARON NUEVOS ENDPOINTS DESTINADOS A TRABAJAR CON EL FRONT DESARROLLADO PARA EL MOÓDULO 3
- *     ESTOS ENDPOINTS, A DEMAS DE TRABAJAR CON LAS ESTRUCTURAS USUARIOS Y VENTAS, TAMBIEN TRABAJARAN
- *     CON LAS 2 ESTRUCTURAS JSON NUEVAS (productosFront y categoriasFront).
- * 
- */
-
 import { Router } from "express"
 import { readFile, writeFile } from "fs/promises";
+
 
 const fileProductos = await readFile('./data/productos.json', 'utf-8');
 const productosData = JSON.parse(fileProductos);

@@ -1,11 +1,67 @@
 import { Router } from "express"
 import { readFile, writeFile } from "fs/promises";
 import { get_user_byId } from "../utils/usuarios.js";
+import jwt from 'jsonwebtoken';
+import bcrypt from "bcryptjs";
+import { decodeToken } from "../utils/middleware.js"
+import { log } from "console";
+import { stat } from "fs";
 
 const fileUsuarios = await readFile('./data/usuarios.json', 'utf-8');
 const usuariosData = JSON.parse(fileUsuarios);
 
+const SECRET = "IkGjdS3DQytluc6orOxdnCe5xByR4RlHwed06ylaed-rbJD9QWDGlfBvcq2IvVKu"
+
 const router = Router();
+
+/** codigo de modulo 4 */ /** USUARIO Y CONTRASEÑA DE PRUEBA "email": "seba@hotmail.com", "password": "test123" */
+
+router.post('/createbc', (req, res) =>{
+    const {id, username, apellido, email, password, direccion} = req.body
+
+    try{
+
+        const hashedPass = bcrypt.hashSync(password, 8)
+
+        const id = usuariosData.length > 0 ? usuariosData[usuariosData.length-1].id + 1 : 1
+
+        usuariosData.push({id, username, apellido, email, password:hashedPass, direccion});
+
+        writeFile('./data/usuarios.json', JSON.stringify(usuariosData, null, 2));
+
+        res.status(200).json('Usuario creado');
+    
+    }catch(error){
+
+        console.log(error)
+        res.status(400).json({status:false});
+    }
+
+})
+
+router.post('/loginbc', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    const result = usuariosData.find(e => e.email === email);
+
+    if(!result){
+        res.status(400).json({status:false})
+    }
+
+    const controlPass = bcrypt.compareSync(password, result.password)
+    console.log(controlPass)
+
+    if (!controlPass){
+        res.status(401).json({status:false})
+    }
+
+    const token = jwt.sign({ ...result}, SECRET, {expiresIn: 86400})
+
+    res.status(200).json(token)
+
+})
+
 /** Codigo del modulo 3 */
 
 router.post('/loginfront', (req, res) => {
@@ -15,7 +71,7 @@ router.post('/loginfront', (req, res) => {
     const result = usuariosData.find(e => e.email === email && e.password === password);
 
     if (result) {
-        // Devuelve un objeto JSON con los datos que necesitas
+
         res.status(200).json({
             username: result.username,
             apellido: result.apellido,

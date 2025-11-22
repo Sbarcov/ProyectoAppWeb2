@@ -1,6 +1,8 @@
 import { Router } from "express"
 import { readFile, writeFile } from "fs/promises";
 import { get_user_byId } from "../utils/usuarios.js";
+import jwt from 'jsonwebtoken';
+import { decodeToken, verifyToken } from "../utils/middleware.js"
 
 const fileVentas = await readFile('./data/ventas.json', 'utf-8');
 const ventasData = JSON.parse(fileVentas);
@@ -8,17 +10,59 @@ const ventasData = JSON.parse(fileVentas);
 const fileVentasFront = await readFile('./data/ventasFront.json', 'utf-8');
 const ventasDataFront = JSON.parse(fileVentasFront);
 
+const SECRET = "IkGjdS3DQytluc6orOxdnCe5xByR4RlHwed06ylaed-rbJD9QWDGlfBvcq2IvVKu"
+
 const router = Router();
+
+/** codigo del modulo 4 */
+
+router.post('/registrar', async(req, res) => {
+
+    const token = req.body.token
+
+    if (!await verifyToken(token)){
+        return res.status(400).json({status:false})
+    }
+
+    const decodeToken = await jwt.verify(token,SECRET)
+
+    const decodeUser = {
+        username: decodeToken.username,
+        apellido: decodeToken.apellido,
+        email: decodeToken.email,
+        direccion: decodeToken.direccion
+    }
+
+    const numeroOrden = ventasDataFront.length > 0 ? ventasDataFront[ventasDataFront.length-1].orden + 1 : 1
+
+    req.body.usuario = decodeUser
+
+        const nuevaOrden = {
+                fecha: new Date().toISOString(),
+                usuario: req.body.usuario,
+                items: req.body.items,
+                total: req.body.total,
+                orden: numeroOrden,
+            };
+
+    try{
+        ventasDataFront.push(nuevaOrden);
+        writeFile('./data/ventasFront.json', JSON.stringify(ventasDataFront, null, 2));
+        res.status(200).json('Venta registrada');
+    }catch (error){
+        res.status(500).json('Error al registrar venta');
+    }
+})
 
 /** codigo del modulo 3 */
 
 router.post('/registrar', (req, res) => {
 
-    const numeroOrden = Math.floor(Math.random() * 9000) + 1000;
+    const numeroOrden = ventasDataFront.length > 0 ? ventasDataFront[ventasDataFront.length-1].id + 1 : 1
 
     const nuevaOrden = {
       ...req.body,
-      orden: numeroOrden, /** Simulamos un numero de orden, esta puede ser el id asignado automaticamente al persistir en una bd */
+      orden: numeroOrden,
       fecha: new Date().toISOString()
 
     };

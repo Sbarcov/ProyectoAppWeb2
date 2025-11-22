@@ -79,5 +79,24 @@
     ],
     "total": "860.94",
     "orden": 3
+  },
+  {
+    "fecha": "2025-11-22T01:58:19.039Z",
+    "usuario": {
+      "username": "pepe",
+      "apellido": "perez",
+      "email": "perez@hotmail.com",
+      "direccion": "Av.Peron 123"
+    },
+    "items": [
+      {
+        "title": "White Gold Plated Princess",
+        "price": "9.99",
+        "quantity": 2,
+        "id": "7"
+      }
+    ],
+    "total": "19.98",
+    "orden": 4
   }
 ]

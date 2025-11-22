@@ -14,5 +14,13 @@
     "email": "seba@hotmail.com",
     "password": "$2b$08$bkofG.YLk2E8wNPJmo3UTO7vSnw1PkIhJPF2bx8hFJxknjoxGYKaC",
     "direccion": "San martin"
+  },
+  {
+    "id": 3,
+    "username": "pepe",
+    "apellido": "perez",
+    "email": "perez@hotmail.com",
+    "password": "$2b$08$V.yQyaVMP/Kvj9YEMfF7.OakVhO1hypXNzh6TtlExTyD6/VigXCxy",
+    "direccion": "Av.Peron 123"
   }
 ]
